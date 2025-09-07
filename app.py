@@ -1,4 +1,3 @@
-# app.py
 from flask import Flask, request, render_template
 import numpy as np
 import pickle
@@ -12,6 +11,7 @@ except FileNotFoundError:
         "Error: model.pkl not found. Please run model.py first to create the model file."
     )
     exit()
+
 
 app = Flask(__name__)
 
