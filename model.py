@@ -1,7 +1,6 @@
-# model.py
 import pickle
 import pandas as pd
-from sklearn.model_selection import train_test_split, GridSearchCV
+from sklearn.model_selection import GridSearchCV
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.preprocessing import StandardScaler
 from sklearn.pipeline import Pipeline
@@ -22,6 +21,7 @@ column_names = [
     "outcome",
 ]
 
+
 # Load the dataset directly from the URL using pandas
 try:
     diabetes_df = pd.read_csv(url, header=None, names=column_names)
@@ -29,6 +29,7 @@ except Exception as e:
     print(f"Error loading data from URL: {e}")
     # Exit if data cannot be loaded
     exit()
+
 
 # Drop the 'pregnancies' column as requested
 diabetes_df = diabetes_df.drop("pregnancies", axis=1)
@@ -61,6 +62,7 @@ best_model = grid_search.best_estimator_
 
 print("Best model parameters found: ", grid_search.best_params_)
 print(f"Model accuracy on the training set: {best_model.score(X, y):.4f}")
+
 
 # Save the best trained model to a pickle file
 with open("model.pkl", "wb") as f:
