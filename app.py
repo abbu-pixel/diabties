@@ -8,15 +8,19 @@ try:
     with open("model.pkl", "rb") as f:
         model = pickle.load(f)
 except FileNotFoundError:
-    print("Error: model.pkl not found. Please run model.py first to create the model file.")
+    print(
+        "Error: model.pkl not found. Please run model.py first to create the model file."
+    )
     exit()
 
 app = Flask(__name__)
+
 
 @app.route("/")
 def home():
     """Renders the home page with the diabetes prediction form."""
     return render_template("index.html")
+
 
 @app.route("/predict", methods=["POST"])
 def predict():
@@ -47,10 +51,11 @@ def predict():
             return "Based on the data, the patient is predicted to have diabetes."
         else:
             return "Based on the data, the patient is predicted to be non-diabetic."
-            
+
     except Exception as e:
         # Provide a more informative error message to the user
         return f"An error occurred: {str(e)}. Please check your input."
+
 
 if __name__ == "__main__":
     app.run(debug=True)
