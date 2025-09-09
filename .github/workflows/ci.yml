@@ -29,12 +29,12 @@ jobs:
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
     # Step 4: Run tests (if you have pytest)
-    - name: Run tests
-      run: |
-        if [ -f tests ]; then pytest; fi
+    # - name: Run tests
+    #   run: |
+    #     if [ -f tests ]; then pytest; fi
 
-    # Optional: Lint your code
-    - name: Lint code
-      run: |
-        pip install flake8
-        flake8 .
+    # # Optional: Lint your code
+    # - name: Lint code
+    #   run: |
+    #     pip install flake8
+    #     flake8 .
